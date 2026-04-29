@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <title>Login</title>
 <link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
 </head>
 
 <body>
@@ -12,14 +15,70 @@
 
 <h2>Login to MOCKDOST</h2>
 
-<input placeholder="Email">
-<input placeholder="Password">
+<input id="email" placeholder="Email">
+<input id="password" placeholder="Password">
 
-<button onclick="location.href='dashboard.html'">
-Login
-</button>
+<button onclick="loginEmail()">Login</button>
+
+<hr>
+
+<h3>Phone Login</h3>
+
+<input id="phone" placeholder="+91XXXXXXXXXX">
+
+<button onclick="sendOTP()">Send OTP</button>
+
+<input id="otp" placeholder="Enter OTP">
+
+<button onclick="verifyOTP()">Verify OTP</button>
 
 </div>
+
+<script>
+
+const supabase = supabase.createClient(
+"https://eyymxdladebfdyqujnws.supabase.co",
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+);
+
+async function loginEmail(){
+const email = document.getElementById("email").value
+const password = document.getElementById("password").value
+
+const { data, error } = await supabase.auth.signInWithPassword({
+email: email,
+password: password
+})
+
+if(data){
+window.location="dashboard.html"
+}
+}
+
+async function sendOTP(){
+const phone = document.getElementById("phone").value
+
+await supabase.auth.signInWithOtp({
+phone: phone
+})
+}
+
+async function verifyOTP(){
+const phone = document.getElementById("phone").value
+const otp = document.getElementById("otp").value
+
+const { data, error } = await supabase.auth.verifyOtp({
+phone: phone,
+token: otp,
+type: 'sms'
+})
+
+if(data){
+window.location="dashboard.html"
+}
+}
+
+</script>
 
 </body>
 </html>
