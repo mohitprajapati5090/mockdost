@@ -1,0 +1,74 @@
+body{
+margin:0;
+font-family:Arial;
+background:#f5f3ff;
+}
+
+.nav{
+background:#6d28d9;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+}
+
+.logo{
+font-weight:bold;
+font-size:20px;
+}
+
+.loginBtn{
+background:white;
+padding:8px 15px;
+border-radius:6px;
+text-decoration:none;
+color:#6d28d9;
+}
+
+.hero{
+text-align:center;
+padding:80px 20px;
+}
+
+.startBtn{
+background:#6d28d9;
+color:white;
+padding:12px 20px;
+text-decoration:none;
+border-radius:8px;
+}
+
+.section{
+padding:40px;
+text-align:center;
+}
+
+.grid{
+display:flex;
+gap:20px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:10px;
+width:150px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.loginBox{
+width:300px;
+margin:100px auto;
+background:white;
+padding:20px;
+border-radius:10px;
+text-align:center;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
